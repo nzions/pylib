@@ -57,7 +57,7 @@ class ThreadQ:
                 except:
                     cb = (False, sys.exc_info())
 
-                if callback != None: callback(cb)
+                if callback != None: callback(*cb)
                 
             else:
                 sleep(0.1)
