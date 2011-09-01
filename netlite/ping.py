@@ -105,7 +105,6 @@ class Ping():
         sock.sendto(message, (ip, 1))
 
         # now recieve the response
-        
         sel = select.select([sock], [], [], (timeout / 1000))
         if sel[0] == []:
             return(False,timeout)
@@ -121,7 +120,7 @@ class Ping():
         r_type, r_code, r_checksum, r_id, r_sequence = struct.unpack('!BBHHH', header)
 
         if (r_type != 0 and r_code != 0):
-            return(False, -1)
+            return(False, 0)
 
         if (r_id == process_id and r_sequence == sequence):
             return(True, current_rttms)
